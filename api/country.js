@@ -1,3 +1,5 @@
+const countries = document.getElementById("countries");
+
 const url = "https://restcountries.com/v3.1/all";
 
 const loadCountries = async () => {
@@ -8,6 +10,16 @@ const loadCountries = async () => {
 
 loadCountries();
 
-const displayCountries = async (countries) => {
-  countries.forEach((country) => {});
+const displayCountries = async (datas) => {
+  datas.map((data) => {
+    const country = document.createElement("div");
+    country.innerHTML = `  <div class="card">
+  <img src=${data.flags.png} alt="brown couch" />
+  <div class="card__content">
+    <span class="card__title">${data.name.official}<span>
+    <p>${data.capital}</p>
+  </div>
+</div>`;
+    countries.appendChild(country);
+  });
 };
